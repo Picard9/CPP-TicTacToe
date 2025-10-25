@@ -73,6 +73,7 @@ public:
 		{
 			std::cout << "\nIt's a draw!\n\n";
 			return true;
+
 		}
 
 		return false;
@@ -130,5 +131,6 @@ public:
 			else m_board[choice - 1] = 'O';
 		}
 		turn = !turn;
+		system("cls");
 	}
 };
