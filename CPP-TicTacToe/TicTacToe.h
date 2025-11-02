@@ -67,15 +67,16 @@ public:
 				isDraw = false; // found an empty cell / not a draw
 				break; //This breal helps me to Exit the loop once I met the condition
 			}
+
 		}
 
 		if (isDraw)
 		{
 			std::cout << "\nIt's a draw!\n\n";
 			return true;
+			system("cls");
 
 		}
-
 		return false;
 	}
 
@@ -84,9 +85,11 @@ public:
 	// This function should display the current state of the game
 	virtual void Display() const
 	{
+		//system("cls");
+
 		std::cout << "\nTic-Tac-Toe Board:\n\n";
 
-		std::cout << "-----------\n";
+		std::cout << "-----------\n";// Horizontal top edge
 		for (int row = 0; row < 3; row++)
 		{
 			for (int col = 0; col < 3; col++) {
@@ -95,9 +98,9 @@ public:
 				if (col < 2) std::cout << "|";  // vertical divider
 			}
 			std::cout << std::endl;
-			if (row < 2) std::cout << "---+---+---" << std::endl;
+			if (row < 2) std::cout << "---+---+---" << std::endl; // Horizontal divider
 		}
-		std::cout << "-----------\n";
+		std::cout << "-----------\n";// Horizontal bottom edge
 	}
 
 	// This function should allow the current player to take their turn
@@ -108,29 +111,33 @@ public:
 
 		if (turn)
 		{
-			std::cout << "\nPlayer " << player << "'s turn enter a position (1-9): ";
+			std::cout << "\nPlayer " << player << "'s turn: nter a position (1-9): ";
 			std::cin >> choice;
 
 			if ((choice < 1 || choice > 9) || (m_board[choice - 1] == 'X' || m_board[choice - 1] == 'O'))
 			{
-				std::cout << "\nPlayer " << player << ": enter a valid position.\n";
+				system("cls");
+				std::cout << "\nPlayer " << player << ": Enter a valid position.\n";
 				return;
 			}
 			else m_board[choice - 1] = 'X';
 		}
 		else
 		{
-			std::cout << "\nPlayer " << player << "'s turn enter a position (1-9): ";
+			std::cout << "\nPlayer " << player << "'s turn: enter a position (1-9): ";
 			std::cin >> choice;
 
 			if ((choice < 1 || choice > 9) || (m_board[choice - 1] == 'X' || m_board[choice - 1] == 'O'))
 			{
-				std::cout << "\nPlayer " << player << ": enter a valid position.\n";
+				system("cls");
+				std::cout << "\nPlayer " << player << ": Enter a valid position.\n";
 				return;
+
 			}
 			else m_board[choice - 1] = 'O';
 		}
 		turn = !turn;
 		system("cls");
 	}
+
 };
